@@ -6,9 +6,6 @@ public class NativeLibraryCalls {
     }
 
     native public static boolean calculate(String inputExpression,
-                                                String inputExpressionX);
-
-    native public static boolean calculate(String inputExpression,
                                            double x);
 
     native public static double getResult();

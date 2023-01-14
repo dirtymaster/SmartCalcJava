@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Scanner;
 
 public class View {
     private JTextField xValueTextField;
@@ -57,8 +58,9 @@ public class View {
     private JLabel stepLabel;
     private JPanel mainPanel;
 
-    JTextField currentTextField;
-    TextFieldHandler handler;
+    private JTextField currentTextField;
+    private TextFieldHandler handler;
+    private Scanner scanner;
 
 
     public View() {
@@ -74,7 +76,6 @@ public class View {
         handler.addActionListener(a8Button, "8");
         handler.addActionListener(a9Button, "9");
         handler.addActionListener(a0Button, "0");
-        handler.addActionListener(ACButton, "");
         handler.addActionListener(powButton, "^");
         handler.addActionListener(divideButton, "/");
         handler.addActionListener(multiplyButton, "*");
@@ -94,6 +95,7 @@ public class View {
         handler.addActionListener(lnButton, "ln(");
         handler.addActionListener(sqrtButton, "sqrt(");
         handler.addActionListener(modButton, "mod(");
+        handler.addMouseListener(expressionTextField);
         handler.addMouseListener(xValueTextField);
         handler.addMouseListener(xMinTextField);
         handler.addMouseListener(xMaxTextField);
@@ -103,9 +105,38 @@ public class View {
         equalsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NativeLibraryCalls.calculate(expressionTextField.getText(), 0);
-                expressionTextField.setText(
-                        String.valueOf(NativeLibraryCalls.getResult()));
+                Double x = null;
+
+                if (expressionTextField.getText().contains("x")) {
+                    scanner = new Scanner(xValueTextField.getText());
+                    try {
+                        x = scanner.nextDouble();
+                    } catch (Exception exception) {
+                        System.out.println(exception);
+                    }
+                } else {
+                    x = 0.0;
+                }
+                if (x != null && NativeLibraryCalls.calculate(
+                        expressionTextField.getText(), x)) {
+                    double result = NativeLibraryCalls.getResult();
+                    if ((int)result == result) {
+                        expressionTextField.setText(String.valueOf((int)result));
+                    } else {
+                        expressionTextField.setText(String.valueOf(result));
+                    }
+
+                } else {
+                    expressionTextField.setText("Invalid expression");
+                }
+
+            }
+        });
+        ACButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                expressionTextField.setText("");
+                xValueTextField.setText("");
             }
         });
     }
@@ -114,6 +145,7 @@ public class View {
         JFrame frame = new JFrame("SmartCalc");
         frame.setContentPane(new View().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
     }

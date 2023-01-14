@@ -1,0 +1,12 @@
+/opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/goinfre/pilafber/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/pilafber/Projects/SmartCalcJava/test -B /Users/pilafber/Projects/SmartCalcJava/test/cmake-build-debug
+CMake Error at /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find JNI (missing: JAVA_INCLUDE_PATH JAVA_INCLUDE_PATH2 AWT)
+Call Stack (most recent call first):
+  /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake:594 (_FPHSA_FAILURE_MESSAGE)
+  /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindJNI.cmake:562 (find_package_handle_standard_args)
+  CMakeLists.txt:4 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/pilafber/Projects/SmartCalcJava/test/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/pilafber/Projects/SmartCalcJava/test/cmake-build-debug/CMakeFiles/CMakeError.log".

@@ -9,11 +9,7 @@ import edu.school21.smartcalc.modalwindows.Information;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class View {
     static JFrame frame = new JFrame("SmartCalc");
@@ -63,24 +59,32 @@ public class View {
     private JLabel yMaxLabel;
     private JLabel stepLabel;
     private JPanel mainPanel;
-    private JPanel chartPanel;
+    private JPanel graphicPanelWrapper;
     private JButton eButton;
     private JButton resetButton;
     private JButton historyButton;
     private JButton backspaceButton;
     private JButton button1;
-
-    private JTextField currentTextField;
     private TextFieldHandler handler;
     private Scanner scanner;
-    private GraphicsPanel graphicsPanel = null;
-    private List<String> expressions = new ArrayList<>();
+    private GraphicsPanel graphicPanel = null;
+    private Set<String> expressions = new HashSet<>();
 
 
     public View() {
         initTextFields();
         handler = new TextFieldHandler(expressionTextField);
 
+        addMainButtonsLogic();
+        addEqualsButtonLogic();
+        addClearButtonLogic();
+        addResetButtonLogic();
+        addGraphicLogic();
+        addHistoryLogic();
+        graphicPanelWrapper.setLayout(new BorderLayout());
+    }
+
+    private void addMainButtonsLogic() {
         handler.addUppendingActionListener(a1Button, "1");
         handler.addUppendingActionListener(a2Button, "2");
         handler.addUppendingActionListener(a3Button, "3");
@@ -122,21 +126,6 @@ public class View {
         handler.addMouseListener(yMinTextField);
         handler.addMouseListener(yMaxTextField);
         handler.addMouseListener(stepTextField);
-
-        addEqualsButtonLogic();
-        addClearButtonLogic();
-        addResetButtonLogic();
-        addGraphicLogic();
-        chartPanel.setLayout(new BorderLayout());
-
-        historyButton.addActionListener(e -> {
-            History history = new History(frame, expressions);
-            history.setVisible(true);
-        });
-        button1.addActionListener(e -> {
-            Information information = new Information(frame);
-            information.setVisible(true);
-        });
     }
 
     private void addEqualsButtonLogic() {
@@ -162,7 +151,9 @@ public class View {
                 if ((int) result == result) {
                     expressionTextField.setText(String.valueOf((int) result));
                 } else {
-                    expressionTextField.setText(String.valueOf(result));
+                    expressionTextField.setText(String.valueOf(
+                            (double) Math.round(result * 1_000_000)
+                                    / 1_000_000));
                 }
             } else {
                 expressionTextField.setText("Invalid expression");
@@ -185,8 +176,8 @@ public class View {
             yMinTextField.setText("-10");
             yMaxTextField.setText("10");
             stepTextField.setText("0.1");
-            if (graphicsPanel != null) {
-                chartPanel.remove(graphicsPanel);
+            if (graphicPanel != null) {
+                graphicPanelWrapper.remove(graphicPanel);
             }
         });
     }
@@ -231,16 +222,16 @@ public class View {
                 stepTextField.setText("Invalid");
                 return;
             }
-            if (graphicsPanel != null) {
-                chartPanel.remove(graphicsPanel);
+            if (graphicPanel != null) {
+                graphicPanelWrapper.remove(graphicPanel);
             }
-            graphicsPanel = new GraphicsPanel(chartPanel.getWidth(),
-                    chartPanel.getHeight());
-            graphicsPanel.setBackground(Color.WHITE);
-            graphicsPanel.setParams(xMin, xMax, yMin, yMax, step,
+            graphicPanel = new GraphicsPanel(graphicPanelWrapper.getWidth(),
+                    graphicPanelWrapper.getHeight());
+            graphicPanel.setBackground(Color.WHITE);
+            graphicPanel.setParams(xMin, xMax, yMin, yMax, step,
                     expressionTextField.getText());
-            chartPanel.add(graphicsPanel, BorderLayout.CENTER);
-            chartPanel.revalidate();
+            graphicPanelWrapper.add(graphicPanel, BorderLayout.CENTER);
+            graphicPanelWrapper.revalidate();
         });
     }
 
@@ -250,6 +241,18 @@ public class View {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    private void addHistoryLogic() {
+        historyButton.addActionListener(e -> {
+            History history
+                    = new History(frame, expressions, expressionTextField);
+            history.setVisible(true);
+        });
+        button1.addActionListener(e -> {
+            Information information = new Information(frame);
+            information.setVisible(true);
+        });
     }
 
     private void initTextFields() {
@@ -273,7 +276,6 @@ public class View {
     public static void main(String[] args) {
         frame.setContentPane(new View().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);

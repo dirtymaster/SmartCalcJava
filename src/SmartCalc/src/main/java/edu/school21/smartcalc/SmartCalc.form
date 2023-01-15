@@ -345,7 +345,7 @@
           <text value="   step   "/>
         </properties>
       </component>
-      <grid id="5d094" binding="chartPanel" layout-manager="GridBagLayout">
+      <grid id="5d094" binding="graphicPanelWrapper" layout-manager="GridBagLayout">
         <constraints>
           <grid row="2" column="8" row-span="5" col-span="6" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>

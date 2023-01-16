@@ -93,7 +93,7 @@ public class MainWindow {
 
     private void loadHistoryFromFile() {
         historyFile = new HistoryFile(historyFileName);
-        expressions = historyFile.loadExpressionsFromHistoryFile();
+        expressions = historyFile.loadExpressionsFromHistoryFile(expressionTextField);
     }
 
     private void addMainButtonsLogic() {

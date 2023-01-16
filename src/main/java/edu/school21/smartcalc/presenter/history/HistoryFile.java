@@ -1,5 +1,6 @@
 package edu.school21.smartcalc.presenter.history;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class HistoryFile {
         file = new File(historyFileName);
     }
 
-    public Set<String> loadExpressionsFromHistoryFile() {
+    public Set<String> loadExpressionsFromHistoryFile(JTextField jTextField) {
         Set<String> expressions = new HashSet<>();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
             Scanner fileScanner = new Scanner(fileInputStream);
@@ -23,6 +24,7 @@ public class HistoryFile {
             }
         } catch (IOException e) {
             System.err.println("File \"\"" + historyFileName + "\" not found");
+            jTextField.setText("History file not found");
         }
         return expressions;
     }

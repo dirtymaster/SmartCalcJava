@@ -1,0 +1,3 @@
+/Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/build/CMakeFiles/smartcalc.dir
+/Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/build/CMakeFiles/edit_cache.dir
+/Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/build/CMakeFiles/rebuild_cache.dir

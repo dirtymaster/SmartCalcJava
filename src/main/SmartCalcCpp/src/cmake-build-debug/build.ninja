@@ -1,0 +1,163 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: smartcalc
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/cmake-build-debug/
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target smartcalc
+
+
+#############################################
+# Order-only phony target for smartcalc
+
+build cmake_object_order_depends_target_smartcalc: phony || CMakeFiles/smartcalc.dir
+
+build CMakeFiles/smartcalc.dir/Model/Model.cpp.o: CXX_COMPILER__smartcalc_Debug /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/Model/Model.cpp || cmake_object_order_depends_target_smartcalc
+  DEFINES = -Dsmartcalc_EXPORTS
+  DEP_FILE = CMakeFiles/smartcalc.dir/Model/Model.cpp.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -fPIC -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Library/Java/JavaVirtualMachines/jdk-18.0.2.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk-18.0.2.jdk/Contents/Home/include/darwin
+  OBJECT_DIR = CMakeFiles/smartcalc.dir
+  OBJECT_FILE_DIR = CMakeFiles/smartcalc.dir/Model
+
+build CMakeFiles/smartcalc.dir/Controller/Controller.cpp.o: CXX_COMPILER__smartcalc_Debug /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/Controller/Controller.cpp || cmake_object_order_depends_target_smartcalc
+  DEFINES = -Dsmartcalc_EXPORTS
+  DEP_FILE = CMakeFiles/smartcalc.dir/Controller/Controller.cpp.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -fPIC -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Library/Java/JavaVirtualMachines/jdk-18.0.2.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk-18.0.2.jdk/Contents/Home/include/darwin
+  OBJECT_DIR = CMakeFiles/smartcalc.dir
+  OBJECT_FILE_DIR = CMakeFiles/smartcalc.dir/Controller
+
+build CMakeFiles/smartcalc.dir/edu_school21_smartcalc_presenter_NativeLibraryCalls.cpp.o: CXX_COMPILER__smartcalc_Debug /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/edu_school21_smartcalc_presenter_NativeLibraryCalls.cpp || cmake_object_order_depends_target_smartcalc
+  DEFINES = -Dsmartcalc_EXPORTS
+  DEP_FILE = CMakeFiles/smartcalc.dir/edu_school21_smartcalc_presenter_NativeLibraryCalls.cpp.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -fPIC -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Library/Java/JavaVirtualMachines/jdk-18.0.2.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk-18.0.2.jdk/Contents/Home/include/darwin
+  OBJECT_DIR = CMakeFiles/smartcalc.dir
+  OBJECT_FILE_DIR = CMakeFiles/smartcalc.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target smartcalc
+
+
+#############################################
+# Link the shared library libsmartcalc.dylib
+
+build libsmartcalc.dylib: CXX_SHARED_LIBRARY_LINKER__smartcalc_Debug CMakeFiles/smartcalc.dir/Model/Model.cpp.o CMakeFiles/smartcalc.dir/Controller/Controller.cpp.o CMakeFiles/smartcalc.dir/edu_school21_smartcalc_presenter_NativeLibraryCalls.cpp.o
+  ARCH_FLAGS = -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
+  INSTALLNAME_DIR = @rpath/
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/smartcalc.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libsmartcalc.dylib
+  SONAME_FLAG = -install_name
+  TARGET_FILE = libsmartcalc.dylib
+  TARGET_PDB = smartcalc.dylib.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/cmake-build-debug && /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/cmake-build-debug && /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src -B/Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+build smartcalc: phony libsmartcalc.dylib
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/cmake-build-debug
+
+build all: phony libsmartcalc.dylib
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/CMakeLists.txt /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeFindJavaCommon.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakePushCheckState.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckSourceCompiles.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindJNI.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build /Users/pilafber/Projects/SmartCalcJava/SmartCalcCpp/src/CMakeLists.txt /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeFindJavaCommon.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakePushCheckState.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckSourceCompiles.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindJNI.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /opt/goinfre/pilafber/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all

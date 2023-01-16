@@ -1,1 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -dynamiclib -Wl,-headerpad_max_install_names -o libtest.dylib -install_name @rpath/libtest.dylib CMakeFiles/test.dir/library.cpp.o 

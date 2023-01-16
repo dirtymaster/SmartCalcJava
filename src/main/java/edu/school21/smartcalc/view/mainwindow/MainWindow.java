@@ -93,7 +93,7 @@ public class MainWindow {
 
     private void loadHistoryFromFile() {
         historyFile = new HistoryFile(historyFileName);
-        expressions = historyFile.loadExpressionsFromHistoryFile(expressionTextField);
+        expressions = historyFile.loadExpressionsFromHistoryFile();
     }
 
     private void addMainButtonsLogic() {
@@ -129,7 +129,7 @@ public class MainWindow {
         addFunctionButtonsActionListener(logButton, "log(");
         addFunctionButtonsActionListener(lnButton, "ln(");
         addFunctionButtonsActionListener(sqrtButton, "sqrt(");
-        addFunctionButtonsActionListener(modButton, "mod(");
+        addFunctionButtonsActionListener(modButton, "mod");
 
         handler.addMouseListener(expressionTextField);
         handler.addMouseListener(xValueTextField);

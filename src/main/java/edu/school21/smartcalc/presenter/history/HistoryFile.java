@@ -15,7 +15,7 @@ public class HistoryFile {
         file = new File(historyFileName);
     }
 
-    public Set<String> loadExpressionsFromHistoryFile(JTextField jTextField) {
+    public Set<String> loadExpressionsFromHistoryFile() {
         Set<String> expressions = new HashSet<>();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
             Scanner fileScanner = new Scanner(fileInputStream);
@@ -24,7 +24,6 @@ public class HistoryFile {
             }
         } catch (IOException e) {
             System.err.println("File \"\"" + historyFileName + "\" not found");
-            jTextField.setText("History file not found");
         }
         return expressions;
     }
